@@ -44,7 +44,8 @@ class request extends my_model {
     }
     
     function getAllRequestByVacancy($vacancyid){
-        $query = $this->db->get_where('request', array('$vacancyid' => $vacancyid),0, 0);
+        $query = $this->db->get_where('request', array('vacancyid' => $vacancyid),0, 0);
+        var_dump($query->result_array());
         return $query->result_array();
     }
     
