@@ -79,7 +79,6 @@ $(function(){
         paginationSpeed : 400,
         singleItem:true
     });
-
 });
 
 /* ========================================================================= */
@@ -120,3 +119,5 @@ function progress(percent, $element) {
         }, 10)
     })(0,percent);  
 }   
+
+

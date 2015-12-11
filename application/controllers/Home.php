@@ -22,4 +22,15 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('home');
 	}
+	
+	public function login()
+	{
+		$this->load->view('login');
+	}
+	
+	public function validateLoginUser()
+	{
+		$isSuccess = true;
+		$this->load->view('mainView', $isSuccess);		
+	}
 }
