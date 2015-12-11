@@ -52,7 +52,6 @@ class vacancy extends my_model {
         $this->db->join('user', 'user.userid = vacancy.userid');
         $this->db->where('vacancy.userid',$userid);
         $query = $this->db->get();
-        var_dump($query->result_array());
         return $query->result_array();
     }
     
