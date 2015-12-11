@@ -31,7 +31,10 @@ CREATE TABLE IF NOT EXISTS `event` (
   CONSTRAINT `FK_event_user` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.event: ~0 rows (approximately)
+DELETE FROM `event`;
+/*!40000 ALTER TABLE `event` DISABLE KEYS */;
+/*!40000 ALTER TABLE `event` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.industry
@@ -40,9 +43,18 @@ CREATE TABLE IF NOT EXISTS `industry` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.industry: ~5 rows (approximately)
+DELETE FROM `industry`;
+/*!40000 ALTER TABLE `industry` DISABLE KEYS */;
+INSERT INTO `industry` (`id`, `name`) VALUES
+	(1, 'Travel & Tourism'),
+	(2, 'Hospitality, Catering'),
+	(3, 'Idustrial, Manufacturing & Production'),
+	(4, ' Agriculture, Forestry & Outdoor'),
+	(5, 'Transport, Logistics & Distribution');
+/*!40000 ALTER TABLE `industry` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.permission
@@ -53,7 +65,10 @@ CREATE TABLE IF NOT EXISTS `permission` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.permission: ~0 rows (approximately)
+DELETE FROM `permission`;
+/*!40000 ALTER TABLE `permission` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.request
@@ -70,7 +85,10 @@ CREATE TABLE IF NOT EXISTS `request` (
   CONSTRAINT `FK__vacancy` FOREIGN KEY (`vacancyid`) REFERENCES `vacancy` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.request: ~0 rows (approximately)
+DELETE FROM `request`;
+/*!40000 ALTER TABLE `request` DISABLE KEYS */;
+/*!40000 ALTER TABLE `request` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.role
@@ -81,7 +99,10 @@ CREATE TABLE IF NOT EXISTS `role` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.role: ~0 rows (approximately)
+DELETE FROM `role`;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.role_permission
@@ -95,7 +116,10 @@ CREATE TABLE IF NOT EXISTS `role_permission` (
   CONSTRAINT `FK_role_permission_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.role_permission: ~0 rows (approximately)
+DELETE FROM `role_permission`;
+/*!40000 ALTER TABLE `role_permission` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role_permission` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.sessions
@@ -110,7 +134,10 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   PRIMARY KEY (`sessionsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Handle the sessions';
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.sessions: ~0 rows (approximately)
+DELETE FROM `sessions`;
+/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.user
@@ -125,9 +152,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.user: ~1 rows (approximately)
+DELETE FROM `user`;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`userid`, `firstname`, `lastname`, `emailaddress`, `nic`, `mobilenumber`, `password`, `username`) VALUES
+	(1, 'sachith', 'ushan', 'khsushan@gmail.com', '920290167V', '+94718853336', 'test', 'khsushan');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.user_role
@@ -141,7 +173,10 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   CONSTRAINT `FK__role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.user_role: ~0 rows (approximately)
+DELETE FROM `user_role`;
+/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.vacancy
@@ -150,6 +185,7 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `userid` int(10) NOT NULL,
   `typeid` int(10) NOT NULL,
   PRIMARY KEY (`id`),
@@ -157,9 +193,14 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
   KEY `FK_vacancy_user` (`userid`),
   CONSTRAINT `FK_vacancy_user` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`),
   CONSTRAINT `FK_vacancy_vacancytype` FOREIGN KEY (`typeid`) REFERENCES `vacancytype` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.vacancy: ~1 rows (approximately)
+DELETE FROM `vacancy`;
+/*!40000 ALTER TABLE `vacancy` DISABLE KEYS */;
+INSERT INTO `vacancy` (`id`, `name`, `description`, `date`, `userid`, `typeid`) VALUES
+	(1, 'testing', 'test desc', '2015-12-11 18:32:46', 1, 1);
+/*!40000 ALTER TABLE `vacancy` ENABLE KEYS */;
 
 
 -- Dumping structure for table hoyanna.vacancytype
@@ -171,9 +212,15 @@ CREATE TABLE IF NOT EXISTS `vacancytype` (
   PRIMARY KEY (`id`),
   KEY `FK_vacancytype_industry` (`industry_id`),
   CONSTRAINT `FK_vacancytype_industry` FOREIGN KEY (`industry_id`) REFERENCES `industry` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table hoyanna.vacancytype: ~2 rows (approximately)
+DELETE FROM `vacancytype`;
+/*!40000 ALTER TABLE `vacancytype` DISABLE KEYS */;
+INSERT INTO `vacancytype` (`id`, `type`, `industry_id`) VALUES
+	(1, 'Trainee Travel Execu', 1),
+	(2, 'Travel Executives', 1);
+/*!40000 ALTER TABLE `vacancytype` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
