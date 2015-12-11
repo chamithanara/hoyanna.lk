@@ -50,7 +50,7 @@
     <!--
     Fixed Navigation
     ==================================== -->
-    <header id="navigation" class="navbar-fixed-top animated-nav" >
+    <header id="navigation" class="navbar-fixed-top animated-nav" style="background-color: rgb(0, 199, 252)">
         <div class="container">
 
             <div class="navbar-header">
@@ -65,22 +65,21 @@
 
                 <!-- logo -->
                 <h1 class="navbar-brand">
-                    <a href="#body">
+                    <a href="<?php echo site_url('Welcome/index') ?>">
                         <img src="<?php echo base_url(); ?>/assets/img/logo.png" alt="Kasper Logo">
                     </a>
                 </h1>
                 <!-- /logo -->
-
+            
                 </div>
 
                 <!-- main nav -->
                 <nav class="collapse navigation navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav" style="color:black">
-                        <li class="current"><a href="#home">Home</a></li>
-                        <li><a style="color:black" href="#service">emploee Tab1</a></li>
-                        <li><a style="color:black" href="#about">emploee Tab2</a></li>
-                        <li><a style="color:black" href="#pricing">emploee Tab3</a></li>
-                        <li><a style="color:black" href="#contact">emploee Tab4</a></li>
+                        <li><a style="color:black" href="#service">employee Tab1</a></li>
+                        <li><a style="color:black" href="#about">employee Tab2</a></li>
+                        <li><a style="color:black" href="#pricing">employee Tab3</a></li>
+                        <li><a style="color:black" href="#contact">employee Tab4</a></li>
                     </ul>
                 </nav>
                 <!-- /main nav -->
@@ -91,105 +90,64 @@
     <!--
     End Fixed Navigation
     ==================================== -->
-
+    
+    <section id="home">
+    </section>
+    
     <!--
     #about-us
     ========================== -->
     <section id="about-us">
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-top:20px">
                 
-                <div class="col-md-5 col-md-offset-1 wow fadeInLeft">
+                <div id="jobDetails" class="col-md-5 col-md-offset-1 wow fadeInLeft">
 
                     <div class="subtitle text-center">
-                        <h3>Testimonials</h3>
-                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                        <h3>Vaccancies</h3>
+                        <p>Vaccancies details.</p>
                     </div>
-
-                    <div id="testimonial">
-
-                        <div class="tst-item clearfix">
-                            <div class="tst-single clearfix">
-                                <img src="<?php echo base_url(); ?>/assets/img/client/1.jpg" alt="Client" class="img-circle">
+                    
+                    <div id="testimonial" style="margin-top:-10px">
+                        <?php $vacancyIndex = 0;
+                            foreach ($vacancies as $vacancy):
+                            if($vacancyIndex % 1){ ?>
+                                <div class="tst-item clearfix" >
+                        <?php } ?>
+                            <a href="#" id="<?= $vacancy['id']; ?>">
+                                <img src="<?php echo base_url(); ?>/assets/img/client/1.png" alt="Client" class="img-circle">
                                 <div class="tst-content">
-                                    <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                    <span>John Doe,CEO</span>
+                                    <p><?= $vacancy['description']; ?></p>
+                                    <p><?= $vacancy['date']; ?></p>
+                                    <p><?= $vacancy['username']; ?></p>
+                                    <p><?= $vacancy['type']; ?></p>
+                                    <span><?= $vacancy['name']; ?></span>
                                 </div>
-                            </div>
-
-                            <div class="tst-single clearfix">
-                                <img src="<?php echo base_url(); ?>/assets/img/client/2.jpg" alt="Client" class="img-circle">
-                                <div class="tst-content">
-                                    <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                    <span>John Doe,CEO</span>
+                            </a> 
+                            <?php 
+                                if($vacancyIndex % 1){ ?>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="tst-item">
-                            <div class="tst-single clearfix">
-                                <img src="<?php echo base_url(); ?>/assets/img/client/3.jpg" alt="Client" class="img-circle">
-                                <div class="tst-content">
-                                    <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                    <span>John Doe,CEO</span>
-                                </div>
-                            </div>
-                            <div class="tst-single clearfix">
-                                <img src="<?php echo base_url(); ?>/assets/mg/client/1.jpg" alt="Client" class="img-circle">
-                                <div class="tst-content">
-                                    <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                    <span>John Doe,CEO</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tst-item">
-                            <div class="tst-single clearfix">
-                                <img src="<?php echo base_url(); ?>/assets/img/client/2.jpg" alt="Client" class="img-circle">
-                                <div class="tst-content">
-                                    <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                    <span>John Doe,CEO</span>
-                                </div>
-                            </div>
-                            <div class="tst-single clearfix">
-                                <img src="<?php echo base_url(); ?>/assets/img/client/3.jpg" alt="Client" class="img-circle">
-                                <div class="tst-content">
-                                    <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                    <span>John Doe,CEO</span>
-                                </div>
-                            </div>
-                        </div>
-
+                            <?php 
+                            } 
+                            $vacancyIndex++;
+                            endforeach; 
+                            ?>  
+                        
                     </div> <!-- end #testimonial -->
                 </div> <!-- end .col-md-5 -->
 
-                <div class="col-md-5 col-md-offset-1 wow fadeInRight">
+                <div style="" id="jobDetailInfo" class="col-md-5 col-md-offset-1 wow fadeInRight">
 
                     <div class="subtitle text-center">
-                        <h3>OUR SKILLS</h3>
-                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                        <h3>Job Details</h3>
+                        <p>Detail information.</p>
                     </div>
-
-                    <div class="progress-bars">
-                        
-                        <span>HTML 5 - <small>95%</small></span>
-                        <div class="progress"  data-progress="95">
-                            <div class="bar"></div>
-                        </div>
-                        <span>CSS 3 - <small>93%</small></span>
-                        <div class="progress"  data-progress="93">
-                            <div class="bar"></div>
-                        </div>
-                        <span>PHP - <small>85%</small></span>
-                        <div class="progress" data-progress="85">
-                            <div class="bar"></div>
-                        </div>
-                        <span>mySQL - <small>87%</small></span>
-                        <div class="progress kill-margin"  data-progress="87">
-                            <div class="bar"></div>
-                        </div>
-
-                    </div>  <!-- progress-bars -->
+                    
+                    <div id="details" class="progress-bars" style="display:none">
+                        <h4>Name : Chamitha</h4>
+                        <h4>Tel : 0770388616</h4>
+                        <h4>Address : 75ads</h4>
+                    </div>
 
                 </div>  <!-- end .col-md-5 -->
 
@@ -215,7 +173,7 @@
                     <div class="footer-social wow fadeInUp">
                         <h3>We are social</h3>
                         <ul class="text-center list-inline">
-                            <li><a href="http://goo.gl/RqhEjP"><i class="fa fa-facebook fa-lg"></i></a></li>
+                            <li><a href="https://www.facebook.com/hoyannalk-138117423222526/"><i class="fa fa-facebook fa-lg"></i></a></li>
                             <li><a href="http://goo.gl/hUfpSB"><i class="fa fa-twitter fa-lg"></i></a></li>
                             <li><a href="http://goo.gl/r4xzR4"><i class="fa fa-google-plus fa-lg"></i></a></li>
                         </ul>
@@ -259,6 +217,6 @@
     <!-- WOW script -->
     <script src="<?php echo base_url(); ?>/assets/js/wow.min.js"></script>
     <!-- theme custom scripts -->
-    <script src="<?php echo base_url(); ?>/assets/js/main.js"></script>
+    <script src="<?php echo base_url(); ?>/assets/js/mainView.js"></script>
 </body>
 </html>

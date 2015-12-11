@@ -49,7 +49,7 @@
                                 </div>
                                 
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button id="loginSubmit" type="submit" class="btn btn-lg btn-success btn-block">Login</a>
+                                <button id="loginSubmit" type="submit" class="btn btn-lg btn-success btn-block">Login</button>
                             </fieldset>                            
                         </form>
                     </div>
@@ -69,7 +69,7 @@
    
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url(); ?>/assets/js/sb-admin-2.js"></script>
-});
+
 </body>
 
 </html>
