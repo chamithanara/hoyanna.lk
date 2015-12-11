@@ -17,12 +17,14 @@ USE `hoyanna`;
 
 
 -- Dumping structure for table hoyanna.event
+DROP TABLE IF EXISTS `event`;
 CREATE TABLE IF NOT EXISTS `event` (
   `id` int(10) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `location` varchar(50) DEFAULT NULL,
   `date` varchar(50) DEFAULT NULL,
-  `venue` varchar(50) DEFAULT NULL,
+  `starttime` int(5) DEFAULT NULL,
+  `endtime` int(5) DEFAULT NULL,
   `userid` int(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_event_user` (`userid`),
@@ -32,7 +34,19 @@ CREATE TABLE IF NOT EXISTS `event` (
 -- Data exporting was unselected.
 
 
+-- Dumping structure for table hoyanna.industry
+DROP TABLE IF EXISTS `industry`;
+CREATE TABLE IF NOT EXISTS `industry` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Data exporting was unselected.
+
+
 -- Dumping structure for table hoyanna.permission
+DROP TABLE IF EXISTS `permission`;
 CREATE TABLE IF NOT EXISTS `permission` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -43,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `permission` (
 
 
 -- Dumping structure for table hoyanna.request
+DROP TABLE IF EXISTS `request`;
 CREATE TABLE IF NOT EXISTS `request` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `description` varchar(50) DEFAULT NULL,
@@ -59,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `request` (
 
 
 -- Dumping structure for table hoyanna.role
+DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `rolename` varchar(50) DEFAULT NULL,
@@ -69,6 +85,7 @@ CREATE TABLE IF NOT EXISTS `role` (
 
 
 -- Dumping structure for table hoyanna.role_permission
+DROP TABLE IF EXISTS `role_permission`;
 CREATE TABLE IF NOT EXISTS `role_permission` (
   `role_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL,
@@ -82,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `role_permission` (
 
 
 -- Dumping structure for table hoyanna.sessions
+DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE IF NOT EXISTS `sessions` (
   `sessionsid` varchar(100) NOT NULL,
   `tel` varchar(50) DEFAULT NULL,
@@ -96,12 +114,16 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 
 
 -- Dumping structure for table hoyanna.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `userid` int(10) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(100) NOT NULL DEFAULT '0',
-  `lastname` varchar(100) NOT NULL DEFAULT '0',
-  `emailaddress` varchar(100) NOT NULL DEFAULT '0',
+  `firstname` varchar(100) DEFAULT '0',
+  `lastname` varchar(100) DEFAULT '0',
+  `emailaddress` varchar(100) DEFAULT '0',
   `nic` varchar(10) NOT NULL DEFAULT '0',
+  `mobilenumber` varchar(12) NOT NULL DEFAULT '0',
+  `password` varchar(50) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -109,6 +131,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 
 -- Dumping structure for table hoyanna.user_role
+DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE IF NOT EXISTS `user_role` (
   `role_id` int(10) NOT NULL,
   `userid` int(10) NOT NULL,
@@ -122,6 +145,7 @@ CREATE TABLE IF NOT EXISTS `user_role` (
 
 
 -- Dumping structure for table hoyanna.vacancy
+DROP TABLE IF EXISTS `vacancy`;
 CREATE TABLE IF NOT EXISTS `vacancy` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -139,10 +163,14 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
 
 
 -- Dumping structure for table hoyanna.vacancytype
+DROP TABLE IF EXISTS `vacancytype`;
 CREATE TABLE IF NOT EXISTS `vacancytype` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `type` varchar(20) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `industry_id` int(10) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `FK_vacancytype_industry` (`industry_id`),
+  CONSTRAINT `FK_vacancytype_industry` FOREIGN KEY (`industry_id`) REFERENCES `industry` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
