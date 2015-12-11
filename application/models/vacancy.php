@@ -44,13 +44,15 @@ class vacancy extends my_model {
     
     //get vacancies accoriding to given userid
     function getVacancyByUser($userid){
-        $this->db->select('*');
+        $this->db->select('vacancy.id ,vacancy.name,vacancy.description,vacancy.date,vacancytype.type,user.username');
         //For determine one or more tables to select from 
         $this->db->from('vacancy');
         //For joining with another table, table name as first argument and condition string as second argument
         $this->db->join('vacancytype', 'vacancytype.id = vacancy.typeid');
+        $this->db->join('user', 'user.userid = vacancy.userid');
         $this->db->where('vacancy.userid',$userid);
         $query = $this->db->get();
+        var_dump($query->result_array());
         return $query->result_array();
     }
     
