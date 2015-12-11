@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table hoyanna.user: ~1 rows (approximately)
+-- Dumping data for table hoyanna.user: ~0 rows (approximately)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`userid`, `firstname`, `lastname`, `emailaddress`, `nic`, `mobilenumber`, `password`, `username`) VALUES
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
   CONSTRAINT `FK_vacancy_vacancytype` FOREIGN KEY (`typeid`) REFERENCES `vacancytype` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table hoyanna.vacancy: ~1 rows (approximately)
+-- Dumping data for table hoyanna.vacancy: ~0 rows (approximately)
 DELETE FROM `vacancy`;
 /*!40000 ALTER TABLE `vacancy` DISABLE KEYS */;
 INSERT INTO `vacancy` (`id`, `name`, `description`, `date`, `userid`, `typeid`) VALUES
@@ -207,19 +207,22 @@ INSERT INTO `vacancy` (`id`, `name`, `description`, `date`, `userid`, `typeid`) 
 DROP TABLE IF EXISTS `vacancytype`;
 CREATE TABLE IF NOT EXISTS `vacancytype` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `type` varchar(20) DEFAULT '0',
+  `type` varchar(200) DEFAULT '0',
   `industry_id` int(10) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `FK_vacancytype_industry` (`industry_id`),
   CONSTRAINT `FK_vacancytype_industry` FOREIGN KEY (`industry_id`) REFERENCES `industry` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Dumping data for table hoyanna.vacancytype: ~2 rows (approximately)
+-- Dumping data for table hoyanna.vacancytype: ~3 rows (approximately)
 DELETE FROM `vacancytype`;
 /*!40000 ALTER TABLE `vacancytype` DISABLE KEYS */;
 INSERT INTO `vacancytype` (`id`, `type`, `industry_id`) VALUES
-	(1, 'Trainee Travel Execu', 1),
-	(2, 'Travel Executives', 1);
+	(1, 'Trainee Travel Executive', 1),
+	(2, 'Travel Executive', 1),
+	(3, 'Senior Travel Executive', 1),
+	(4, 'Tour Executive', 1),
+	(5, 'Service Crew', 1);
 /*!40000 ALTER TABLE `vacancytype` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
